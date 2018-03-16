@@ -7,7 +7,6 @@ const yargs = require('yargs');
 const notes = require('./notes.js');
 
 const yargv = yargs.argv;
-//console.log('Yargs', yargv);
 
 switch(yargv._[0]) {
     case 'add':
@@ -17,8 +16,10 @@ switch(yargv._[0]) {
         notes.getAll();
         break;
     case 'read':
+        notes.getNote(yargv.title);
         break;
     case 'remove':
+        notes.removeNote(yargv.title);
         break;
     default:
         break;
