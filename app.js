@@ -2,16 +2,19 @@
 
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
-let command = process.argv[2];
-let data = process.argv[3];
+const yargv = yargs.argv;
+//console.log('Yargs', yargv);
 
-switch(command) {
+switch(yargv._[0]) {
     case 'add':
+        notes.addNote(yargv.title, yargv.body);
         break;
     case 'list':
+        notes.getAll();
         break;
     case 'read':
         break;
@@ -20,5 +23,3 @@ switch(command) {
     default:
         break;
 }
-
-console.log(data);
