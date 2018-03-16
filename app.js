@@ -1,14 +1,18 @@
 console.log('Starting app.js');
 
 const fs = require('fs');
-const os = require('os');
-const notes = require('./notes.js');
+const _ = require('lodash');
 
-let res = notes.addNote();
-console.log(res);
 
-let ans = notes.add(2, 8);
-console.log(ans);
+
+//console.log(_.isString('Bateman'));
+
+let filteredArray = _.uniq([
+    'Hey', 'hey', 'monica', 'hey', 'poday', 1, 3, 5, 1
+].map(word => {
+    return word.toString().toLowerCase();
+}));
+console.log(filteredArray);
 
 // const user = os.userInfo();
 
