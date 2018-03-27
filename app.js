@@ -11,9 +11,7 @@ const yargv = yargs.argv;
 const readNotes = (title) => {
     let note = notes.getNote(title);
     if(note){
-        console.log(`Note ${note.title} found`);
-        console.log(`------------------------`);
-        console.log(`Body: ${note.body}`);
+        notes.logNote(note);
     }
     else {
         console.log(`Note ${note.title} not found`);
