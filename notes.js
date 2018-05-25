@@ -36,6 +36,7 @@ const addNote = (title, body) => {
 
 const getAll = () => {
     console.log('Getting all');
+    return fecthNotes();
 };
 
 const getNote = (title) => {

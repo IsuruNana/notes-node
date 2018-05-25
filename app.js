@@ -6,7 +6,21 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
-const yargv = yargs.argv;
+const yargv = yargs
+                .command('add', 'Add a new note', {
+                    title: {
+                        describe: 'Title of note',
+                        demand: true,
+                        alias: 't'
+                    },
+                    body: {
+                        describe: 'The body of the note',
+                        demand: true,
+                        alias: 'b'
+                    }
+                })
+                .help()
+                .argv;
 
 const readNotes = (title) => {
     let note = notes.getNote(title);
@@ -25,7 +39,8 @@ switch(yargv._[0]) {
         else console.log(`Note ${res.title} aleady in use`);
         break;
     case 'list':
-        notes.getAll();
+        const allNotes = notes.getAll();
+        allNotes.forEach(note => notes.logNote(note));
         break;
     case 'read':
         readNotes(yargv.title);
